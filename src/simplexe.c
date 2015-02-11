@@ -73,23 +73,21 @@ Equation equationPlan(const Simplexe *s)
 	const Vertex *B = s->sommets[1];
 	const Vertex *C = s->sommets[2];
 	
-	eq.a = (B->coords[1] - A->coords[1]) * (C->coords[2] - A->coords[2]) -
-	       (B->coords[2] - A->coords[2]) * (C->coords[1] - A->coords[1]);
+	eq.a = 0;
 
-	eq.b = (B->coords[2] - A->coords[2]) * (C->coords[0] - A->coords[0]) -
-		    (B->coords[0] - A->coords[0]) * (C->coords[2] - A->coords[2]);
+	eq.b = 0;
 
 	eq.c = (B->coords[0] - A->coords[0]) * (C->coords[1] - A->coords[1]) -
 		   (B->coords[1] - A->coords[1]) * (C->coords[0] - A->coords[0]);
 
-	eq.d = -eq.a * A->coords[0] - eq.b * A->coords[1] - eq.c * A->coords[2];
+	eq.d = -eq.a * A->coords[0] - eq.b * A->coords[1] - eq.c * 0;
 
 	return eq;
 }
 
 double distanceVertexSimplexe(const Simplexe *s, const Vertex *v)
 {
-	return fabs(fabs(-(s->e.a * v->coords[0] + s->e.b * v->coords[1] + s->e.d)/s->e.c) - fabs(v->coords[2]));		   
+	return fabs(fabs(-(s->e.a * v->coords[0] + s->e.b * v->coords[1] + s->e.d)/s->e.c) );		   
 }
 
 const Vertex * getSommetOppose(const Simplexe *s, Simplexe *Voisin)

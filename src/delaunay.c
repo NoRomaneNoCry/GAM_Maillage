@@ -31,15 +31,15 @@ Delaunay *initialisation(const int nbVertex, const int nombreFacette, const doub
 
 	srand(time(NULL)); 
 	/*creation du carré initial */ 
-	d->tableauVertex[0].coords[0] = 0; d->tableauVertex[0].coords[1] = 0; d->tableauVertex[0].coords[2] = 0;	
-	d->tableauVertex[1].coords[0] = 1; d->tableauVertex[1].coords[1] = 0; d->tableauVertex[1].coords[2] = 0;
-	d->tableauVertex[2].coords[0] = 1; d->tableauVertex[2].coords[1] = 1; d->tableauVertex[2].coords[2] = 0;
-	d->tableauVertex[3].coords[0] = 0; d->tableauVertex[3].coords[1] = 1; d->tableauVertex[3].coords[2] = 0;
+	d->tableauVertex[0].coords[0] = 0; d->tableauVertex[0].coords[1] = 0; 
+	d->tableauVertex[1].coords[0] = 1; d->tableauVertex[1].coords[1] = 0; 
+	d->tableauVertex[2].coords[0] = 1; d->tableauVertex[2].coords[1] = 1; 
+	d->tableauVertex[3].coords[0] = 0; d->tableauVertex[3].coords[1] = 1; 
 
 	for(n = 4; n < nbVertex; n++) {
 		d->tableauVertex[n].coords[0] = RAND(0, 1);
 		d->tableauVertex[n].coords[1] = RAND(0, 1);
-		d->tableauVertex[n].coords[2] = RAND(0, H_MAX);
+		//d->tableauVertex[n].coords[2] = RAND(0, H_MAX);
 	}
 
 	s0 = creationSimplexe(&d->tableauVertex[0], &d->tableauVertex[1], &d->tableauVertex[2]);

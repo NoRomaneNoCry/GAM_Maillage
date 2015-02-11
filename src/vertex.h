@@ -13,7 +13,7 @@
 /**
  * @brief Dimension de l'espace
  */
-#define DIM 3
+#define DIM 2
 
 typedef enum { TRUE, FALSE } booleen ;
 
