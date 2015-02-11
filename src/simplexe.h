@@ -58,6 +58,9 @@ typedef struct _Simplexe
 	/** TAGS pour gérer les arêtes **/
 	booleen areteDansSurface[3];
 
+	/*centre du cercle circonscrit*/
+	Vertex centreCercle;
+
 } Simplexe;
 
 /**
@@ -67,6 +70,8 @@ typedef struct _Simplexe
  * @return un Simplexe initialisé
  */
 Simplexe* creationSimplexe(const Vertex *A, const Vertex *B, const Vertex *C);
+
+Vertex calculCentre(const Vertex *A, const Vertex *B, const Vertex *C);
 
 /**
  * @brief retourne la position du Vertex N par rapport au Simplexe s

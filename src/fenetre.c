@@ -32,6 +32,7 @@ void displaySimplexeLigne(Delaunay *d)
 	int i,j;
 	int echelleX = f.maxX - 10;
 	int echelleY = f.maxY - 10;
+	//double angle, rayon;
 
 	glColor3f(0.0, 0.0, 0.0);
   	glClear(GL_COLOR_BUFFER_BIT);
@@ -58,6 +59,26 @@ void displaySimplexeLigne(Delaunay *d)
 			v = v->suivant;
 		}
 		glEnd();
+
+		glBegin(GL_POINTS);
+		glColor3f(1,0,0);
+		
+		glVertex2f(s->centreCercle.coords[0]*echelleX + 5, 
+				f.maxY - s->centreCercle.coords[1]*echelleY - 5);
+		
+		glEnd();
+/*
+		glBegin(GL_LINE_LOOP);
+		glColor3f(1,1,0);
+		rayon = sqrt(pow(s->sommets[0]->coords[0] - s->centreCercle.coords[0],2) + pow(s->sommets[0]->coords[1] - s->centreCercle.coords[1],2));
+		printf("%f\n", rayon);
+		for(i=0; i<1000; i++)
+		{
+		    angle = 2*M_PI*i/1000;
+		    glVertex2f((s->centreCercle.coords[0]+ cos(angle)*rayon)*echelleX + 5, 
+		    	f.maxY - (s->centreCercle.coords[1] +sin(angle)*rayon )*echelleY - 5);
+		}
+		glEnd();*/
 	}
 	glFlush();
 }

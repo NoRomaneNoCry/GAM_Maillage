@@ -25,7 +25,36 @@ Simplexe * creationSimplexe(const Vertex *A, const Vertex *B, const Vertex *C)
 	s->precedentPile = NULL;
 	s->marqueurTemps = 0;
 	s->indiceDansFile = -1;
+	s->centreCercle = calculCentre(A,B,C);
+	afficheSimplexe(s);
+	afficheVertex(&s->centreCercle);
+	printf("\n");
 	return s;
+}
+
+
+Vertex calculCentre(const Vertex *A, const Vertex *B, const Vertex *C)
+{
+	Vertex c;
+
+	double x1 = A->coords[0], y1 = A->coords[1];
+	double x2 = B->coords[0], y2 = B->coords[1];
+	double x3 = C->coords[0], y3 = C->coords[1];
+
+	c.coords[0] = ((pow(x3,2)-pow(x2,2)+pow(y3,2)-pow(y2,2))/2*(y3-y2)) - ((pow(x2,2)-pow(x1,2)+pow(y2,2)-pow(y1,2))/2*(y2-y1)) /
+					((x2-x1)/(y2-y1) - (x3-x2)/(y3-y2));
+
+	double temp = (y2-y1)*(pow(x3,2)-pow(x2,2)+pow(y3,2)-pow(y2,2));
+	double temp2 = (y3-y2)*(pow(x2,2)-pow(x1,2)+pow(y2,2)-pow(y1,2)) ;
+	double temp3 = (2 * ((y3-y2)*(x2-x1) - (y2-y1)*(x3-x2)) );
+	printf("temp = %lf, temp2 = %lf, temp3 = %lf\n", temp, temp2,temp3);
+	//c.coords[0] = ( temp - temp2 ) /
+	//				(temp3 ) ;
+
+	c.coords[1] = -(x2-x1)/(y2-y1)*c.coords[0] + 
+					(pow(x2,2)-pow(x1,2)+pow(y2,2)-pow(y1,2))/(2*(y2-y1));
+
+	return c;
 }
 
 Position positionPointSimplexe(const Simplexe *s, const Vertex *N)

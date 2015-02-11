@@ -22,10 +22,10 @@ extern int opterr;
 
 int main(int argc, char **argv)  
 {  
-	int c;
+	/*int c;
 	int nbPoints = 50;
 	int nbFacette = -1;
-	int affiche = 0;
+	int affiche = 1;
 	int triangle = 0;
 	int delaunay = 1;
 	double distance = 0.f;
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 				break;
 			case 'f': 
 				if ((sscanf(optarg, "%d", &nbFacette) != 1) || nbFacette <= 0)
-					nbFacette = -1; /* un nombre négatif indique que toutes les facettes seront créées*/
+					nbFacette = -1;
 				break;
 			case 'n': 
 				if ((sscanf(optarg, "%d", &nbPoints) != 1) || nbPoints <= 0)
@@ -93,6 +93,15 @@ int main(int argc, char **argv)
 
 	clearFenetre();
 	destruction(d);
+*/
+
+	Vertex a,b,c;
+
+	a.coords[0] = 0.5; a.coords[1] = 0.2;
+	b.coords[0] = 0.8; b.coords[1] = 0.7;
+	c.coords[0] = 0.3; c.coords[1] = 0.6;
+
+	Simplexe *s = creationSimplexe(&a,&b,&c);
 
 	return EXIT_SUCCESS;  
 }  
