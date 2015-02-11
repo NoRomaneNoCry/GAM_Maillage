@@ -55,6 +55,9 @@ typedef struct _Simplexe
 	/* gestion de la file */
 	int indiceDansFile;
 
+	/** TAGS pour gérer les arêtes **/
+	booleen areteDansSurface[3];
+
 } Simplexe;
 
 /**

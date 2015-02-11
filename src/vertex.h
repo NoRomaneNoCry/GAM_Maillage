@@ -15,6 +15,8 @@
  */
 #define DIM 3
 
+typedef enum { TRUE, FALSE } booleen ;
+
 /**
  * @brief permet de gérer l'orientation des angles polaires  
  */
@@ -46,6 +48,8 @@ typedef struct _Vertex
 {
 	double coords[DIM];	
 	struct _Vertex *suivant;
+	booleen estVoronoi;
+	
 } Vertex;
 
 
